@@ -1,5 +1,5 @@
 # EMDAG 
-**Energy-Matched Diffusion for Antibody Design**
+**Energy-Matched Diffusion for Antibody Generation**
 
 
 ---
