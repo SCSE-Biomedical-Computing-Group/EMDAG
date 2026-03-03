@@ -1,7 +1,7 @@
 # EMDAG 
 **Energy-Matched Diffusion for Antibody Design**
 
-![cover-large](./assets/EMDAG.pdf)
+![cover-large](./assets/emdag.png)
 
 ---
 
