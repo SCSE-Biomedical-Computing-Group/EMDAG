@@ -57,7 +57,7 @@ Adjust em_target_ratio in emdag/modules/diffusion/emdag.py to test out different
 
 ## Sampling
 
-Generate antibodies using the trained model (example for Kx = 1, Ko = 1):
+Generate antibodies using the trained model:
 
 1. Configure the checkpoint file path in `./configs/test/emdag_test.yml`
 2. Configure the bash file (`run_mass_generation_emdag.sh`)
