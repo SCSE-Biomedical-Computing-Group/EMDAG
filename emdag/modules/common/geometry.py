@@ -30,8 +30,14 @@ def pairwise_distances(x, y=None, return_v=False):
         return d
 
 
-def normalize_vector(v, dim, eps=1e-6):
-    return v / (torch.linalg.norm(v, ord=2, dim=dim, keepdim=True) + eps)
+# def normalize_vector(v, dim, eps=1e-6):
+#     return v / (torch.linalg.norm(v, ord=2, dim=dim, keepdim=True) + eps)
+# fixing it to avoid nan gradients for energy matching
+def normalize_vector(v, dim=-1, eps=1e-8):
+    # eps-stabilized norm (important for higher-order grads)
+    denom = torch.sqrt((v * v).sum(dim=dim, keepdim=True) + eps)
+    return v / denom
+
 
 
 def project_v2v(v, e, dim):
