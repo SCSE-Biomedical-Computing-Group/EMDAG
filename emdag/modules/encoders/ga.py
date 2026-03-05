@@ -194,7 +194,11 @@ class GABlock(nn.Module):
         aggr_points = aggr_points.sum(dim=2)  # (N, L, n_heads, n_pnts, 3)
 
         feat_points = global_to_local(R, t, aggr_points)  # (N, L, n_heads, n_pnts, 3)
-        feat_distance = feat_points.norm(dim=-1)  # (N, L, n_heads, n_pnts)
+        # feat_distance = feat_points.norm(dim=-1)  # (N, L, n_heads, n_pnts)
+        # changed the above to below so that it doesnt blow out the energy
+        eps = 1e-8
+        feat_distance = torch.sqrt((feat_points * feat_points).sum(dim=-1) + eps)
+
         feat_direction = normalize_vector(
             feat_points, dim=-1, eps=1e-4
         )  # (N, L, n_heads, n_pnts, 3)
